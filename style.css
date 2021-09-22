@@ -28,18 +28,19 @@ input[type="text"] {
   border: 1px solid #ccc;
   outline: none;
 }
-.main{
+.main {
   display: flex;
   flex-direction: column;
-  margin: 20px auto;
+  margin: 60px auto;
   height: auto;
 }
 .todo--area {
-  width: 36%;
+  width: 500px;
+  max-width: 80%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   border: 1px solid #CCC;
+  justify-content: space-between;
   padding: 0 10px;
   border-radius: 5px;
   margin: 10px auto;
@@ -52,17 +53,19 @@ input[type="text"] {
   justify-content: space-around;
   padding: 20px;
 }
-
-.todo input[type="checkbox"]{
-    margin: 0 10px 0 0;
-    cursor: pointer;
-    border-radius: 50%;
+.todo--area:hover {
+  background-color: rgb(243, 243, 243);
+}
+.todo input[type="checkbox"] {
+  margin: 0 10px 0 0;
+  cursor: pointer;
+  border-radius: 50%;
 }
 
-.todo input[type="checkbox"]:checked + div{
-    text-decoration: line-through;
+.todo input[type="checkbox"]:checked + div {
+  text-decoration: line-through;
 }
 
-.remove img{
+.remove img {
   cursor: pointer;
 }
