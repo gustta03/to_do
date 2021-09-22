@@ -20,10 +20,11 @@ header {
 input[type="text"] {
   align-self: flex-end;
   width: 35rem;
+  height: 2rem;
   max-width: 80vw;
   position: absolute;
   padding: 15px;
-  bottom: -17px;
+  bottom: -27px;
   border-radius: 5px;
   border: 1px solid #ccc;
   outline: none;
@@ -39,7 +40,7 @@ input[type="text"] {
   max-width: 80%;
   display: flex;
   align-items: center;
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
   justify-content: space-between;
   padding: 0 10px;
   border-radius: 5px;

@@ -1,38 +1,60 @@
 const bancoDeTasks = [];
+const getBanco = () => JSON.parse(localStorage.getItem("todoList")) ?? [];
 
-const criarItem = (tarefa, status) => {
+const setBanco = (bancoDeTasks) =>
+  localStorage.setItem("todoList", JSON.stringify(bancoDeTasks));
+
+const criarItem = (tarefa, status, indice) => {
   const item = document.createElement("div");
   item.classList.add("todo--area");
 
   item.innerHTML = `<div class="todo">
-  <input type="checkbox" ${status}>
+  <input type="checkbox" ${status} data-indice=${indice}>
   <div>${tarefa}</div>
   </div>
-  <div class="remove">
-  <img src="img/icons8-excluir.svg" width="14px">
+  <input type="button" value="X" data-indice=${indice}>
   </div>`;
   document.querySelector(".main").appendChild(item);
 };
 
 const limparTasks = () => {
-  const todoList = document.querySelector(".todo--area");
+  const todoList = document.querySelector(".main");
   while (todoList.firstChild) {
     todoList.removeChild(todoList.lastChild);
   }
 };
+const removeItem = (indice) => {
+  const banco = getBanco();
+  banco.splice(indice, 1);
+  setBanco(banco);
+  atualizarTela();
+};
+
+const atualizarItem = (indice) => {
+  const banco = getBanco();
+  banco[indice].status = banco[indice].status === "" ? "checked" : "";
+  setBanco(banco);
+  atualizarTela();
+};
 
 const atualizarTela = () => {
   limparTasks();
-  bancoDeTasks.forEach((item) => criarItem(item.tarefa, item.status));
+  const banco = getBanco();
+  banco.forEach((item, indice) => criarItem(item.tarefa, item.status, indice));
 };
 
 const inserirItem = (evento) => {
   const tecla = evento.key;
   const texto = evento.target.value;
   if (tecla === "Enter") {
-    bancoDeTasks.push({ tarefa: texto, status: "" });
-    evento.target.value = "";
+    const banco = getBanco();
+    banco.push({
+      tarefa: texto,
+      status: "",
+    });
+    setBanco(banco);
     atualizarTela();
+    evento.target.value = "";
   }
 };
 
@@ -41,10 +63,10 @@ const clickItem = (evento) => {
   console.log(elemento.type);
   if (elemento.type === "button") {
     const indice = elemento.dataset.indice;
-    removerItem (indice)
-  }else if(elemento.type === checkbox){
+    removeItem(indice);
+  } else if (elemento.type === "checkbox") {
     const indice = elemento.dataset.indice;
-    atualizarItem(indice)
+    atualizarItem(indice);
   }
 };
 
