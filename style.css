@@ -1,0 +1,72 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  font-weight: 600;
+}
+
+header {
+  max-width: 100%;
+  position: relative;
+  height: 140px;
+  font-size: 2.5rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(94, 24, 223);
+}
+
+input[type="text"] {
+  align-self: flex-end;
+  width: 35rem;
+  height: 2rem;
+  max-width: 80vw;
+  position: absolute;
+  padding: 15px;
+  bottom: -27px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 60px auto;
+  height: auto;
+}
+.todo--area {
+  width: 500px;
+  max-width: 80%;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  justify-content: space-between;
+  padding: 0 10px;
+  border-radius: 5px;
+  margin: 10px auto;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  word-break: break-all;
+  justify-content: space-around;
+  padding: 20px;
+}
+.todo--area:hover {
+  background-color: rgb(243, 243, 243);
+}
+.todo input[type="checkbox"] {
+  margin: 0 10px 0 0;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.todo input[type="checkbox"]:checked + div {
+  text-decoration: line-through;
+}
+
+.remove img {
+  cursor: pointer;
+}
