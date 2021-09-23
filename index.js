@@ -54,7 +54,10 @@ const inserirItem = (evento) => {
     });
     setBanco(banco);
     atualizarTela();
-    evento.target.value = "";
+    if(evento.target.value === ""){
+      alert('Atenção! voce está criando uma tarefa vazia')
+      removeItem()
+    }
   }
 };
 
